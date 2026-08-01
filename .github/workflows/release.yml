@@ -53,6 +53,21 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci
 
+      # Make the git tag the single source of truth for the version, so bundle
+      # (installer) filenames and the app version always match the release tag.
+      - name: Set version from tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          export VERSION
+          echo "Setting release version to $VERSION"
+          tmp=$(mktemp)
+          jq --arg v "$VERSION" '.version = $v' src-tauri/tauri.conf.json > "$tmp" && mv "$tmp" src-tauri/tauri.conf.json
+          tmp=$(mktemp)
+          jq --arg v "$VERSION" '.version = $v' package.json > "$tmp" && mv "$tmp" package.json
+          perl -0777 -pi -e 's/(\[workspace\.package\][^\[]*?\bversion\s*=\s*")[^"]*/$1$ENV{VERSION}/' Cargo.toml
+
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -89,6 +104,15 @@ jobs:
 
       - name: Rust cache
         uses: swatinem/rust-cache@v2
+
+      - name: Set version from tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          export VERSION
+          echo "Setting CLI version to $VERSION"
+          perl -0777 -pi -e 's/(\[workspace\.package\][^\[]*?\bversion\s*=\s*")[^"]*/$1$ENV{VERSION}/' Cargo.toml
 
       - name: Build CLI
         run: cargo build --release -p pydev-cli
