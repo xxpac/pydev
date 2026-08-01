@@ -2,8 +2,17 @@ use std::io::{BufRead, BufReader};
 use std::path::Path;
 use std::process::{Command, Stdio};
 
+#[cfg(windows)]
+use std::os::windows::process::CommandExt;
+
 use crate::error::{Error, Result};
 use crate::progress::{LogLevel, Reporter};
+
+/// Windows process-creation flag that prevents child console programs (uv,
+/// code, PowerShell, ...) from flashing a console window when launched from the
+/// GUI app.
+#[cfg(windows)]
+const CREATE_NO_WINDOW: u32 = 0x0800_0000;
 
 /// A key/value environment pair for a child process.
 pub type EnvPair = (String, String);
@@ -41,6 +50,8 @@ pub fn run_in(
     if let Some(dir) = cwd {
         command.current_dir(dir);
     }
+    #[cfg(windows)]
+    command.creation_flags(CREATE_NO_WINDOW);
 
     let mut child = command
         .spawn()
@@ -84,6 +95,8 @@ pub fn capture(program: &str, args: &[&str], envs: &[EnvPair]) -> Result<String>
     for (k, v) in envs {
         command.env(k, v);
     }
+    #[cfg(windows)]
+    command.creation_flags(CREATE_NO_WINDOW);
     let output = command
         .output()
         .map_err(|e| Error::msg(format!("failed to start `{program}`: {e}")))?;
