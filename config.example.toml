@@ -1,0 +1,48 @@
+# pydev CLI configuration example.
+# Copy to `config.toml` and edit, then run: `pydev-cli install --config config.toml`
+# Every field is optional; omitted fields fall back to the defaults shown here.
+
+# UI / message language: "zh-CN" (default) or "en".
+language = "zh-CN"
+
+# When true, the one-click flow reinstalls/updates components that are already
+# present. When false (default), already-satisfied components are skipped.
+reinstall_existing = false
+
+# Network proxy. Leave empty for a direct connection. Used for all downloads
+# and for the `test-network` command. Example: "http://127.0.0.1:7890".
+[proxy]
+http = ""
+https = ""
+# Hosts that bypass the proxy (comma separated), e.g. "localhost,127.0.0.1".
+no_proxy = ""
+
+# The uv package manager.
+[uv]
+# "latest" installs the newest release, or pin one like "0.9.2".
+version = "latest"
+
+# Python (installed and managed by uv).
+[python]
+# "latest" resolves the newest stable CPython, or pin one like "3.13".
+version = "latest"
+# Also create bare `python` / `python3` shims (uv `--default`).
+set_default = true
+
+# Visual Studio Code. Optional: terminal-only users can set install = false.
+[vscode]
+install = true
+extensions = [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.debugpy",
+    "charliermarsh.ruff",
+    "ms-toolsai.jupyter",
+]
+
+# PATH / environment updates.
+[path]
+update = true
+# Unix: any of "bashrc", "zshrc", "fish", "profile".
+# Windows: ignored (the user-level PATH in the registry is always used).
+shells = ["bashrc"]

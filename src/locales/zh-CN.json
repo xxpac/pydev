@@ -1,0 +1,127 @@
+{
+  "app": {
+    "title": "pydev",
+    "subtitle": "Python 开发环境安装器"
+  },
+  "nav": {
+    "oneclick": "一键安装",
+    "components": "组件",
+    "network": "网络",
+    "path": "PATH 环境",
+    "settings": "设置"
+  },
+  "common": {
+    "install": "安装",
+    "reinstall": "重新安装",
+    "installing": "安装中…",
+    "apply": "应用",
+    "applying": "应用中…",
+    "test": "测试网络",
+    "testing": "测试中…",
+    "save": "保存",
+    "saved": "已保存",
+    "add": "添加",
+    "optional": "可选",
+    "update": "更新到最新",
+    "upgradeTo": "升级到 {version}",
+    "refresh": "刷新状态"
+  },
+  "status": {
+    "installed": "已安装",
+    "notInstalled": "未安装",
+    "updateAvailable": "有可用更新",
+    "checking": "检测中…",
+    "configured": "已配置",
+    "pending": "待配置"
+  },
+  "oneclick": {
+    "title": "一键安装",
+    "lead": "使用推荐的默认配置，一次性安装全部组件。你也可以在“组件”页中单独安装。",
+    "summaryTitle": "将会安装以下内容：",
+    "uv": "uv 包管理器",
+    "python": "Python（{version}，由 uv 安装）",
+    "vscode": "Visual Studio Code",
+    "extensions": "{count} 个 VSCode 扩展",
+    "path": "更新 PATH 环境变量",
+    "button": "开始一键安装",
+    "running": "正在安装…",
+    "reinstall": "重新安装/更新已安装的组件",
+    "skipHint": "已安装且满足要求的组件会被自动跳过（打开上方开关可强制重装）。",
+    "installedTag": "已安装",
+    "willInstall": "将安装",
+    "willUpdate": "将更新",
+    "willSkip": "将跳过"
+  },
+  "components": {
+    "title": "组件",
+    "lead": "每个组件都可以单独安装或重新安装。例如，只切换到另一个 Python 版本。",
+    "uv": {
+      "title": "uv 包管理器",
+      "hint": "极速的 Python 包与版本管理器，Python 由它安装与管理。"
+    },
+    "python": {
+      "title": "Python",
+      "hint": "选择要安装的 Python 版本，由 uv 下载与管理。",
+      "version": "版本",
+      "setDefault": "同时创建 python / python3 命令",
+      "installedList": "已安装：{versions}",
+      "none": "尚未安装任何版本",
+      "missing": "所选版本尚未安装"
+    },
+    "vscode": {
+      "title": "Visual Studio Code",
+      "hint": "安装最新稳定版 VSCode，并配置 Python 开发所需扩展。",
+      "enable": "安装 VSCode（仅使用终端可关闭）",
+      "extensions": "扩展",
+      "addPlaceholder": "发布者.扩展名",
+      "installExt": "仅安装扩展",
+      "extCount": "{installed}/{total} 个扩展已安装",
+      "extUpdates": "，{count} 个可更新"
+    }
+  },
+  "network": {
+    "title": "网络",
+    "lead": "如果你处于防火墙或代理之后，请在此设置代理。默认留空表示直连。",
+    "http": "HTTP 代理",
+    "https": "HTTPS 代理",
+    "noProxy": "不代理的主机",
+    "placeholder": "例如 http://127.0.0.1:7890",
+    "summary": "{ok}/{total} 个地址可达",
+    "hint": "若部分地址不可达，请填写上方代理后重试。",
+    "reachable": "可达",
+    "unreachable": "不可达"
+  },
+  "path": {
+    "title": "PATH 环境",
+    "lead": "为让 uv、Python 和 code 命令可用，需要把下列目录加入 PATH。",
+    "entries": "将加入 PATH 的目录",
+    "targets": "将修改的位置",
+    "shells": "要更新的 Shell 配置文件",
+    "update": "允许更新 PATH",
+    "apply": "应用 PATH 更改",
+    "windowsNote": "在 Windows 上将更新当前用户的 PATH（注册表），无需管理员权限。"
+  },
+  "settings": {
+    "title": "设置",
+    "lead": "界面语言与配置。设置会保存到本地配置文件，供 CLI 与下次启动使用。",
+    "language": "界面语言",
+    "chinese": "中文",
+    "english": "English",
+    "save": "保存配置到磁盘",
+    "configNote": "配置文件同样可被命令行工具 pydev-cli 使用。"
+  },
+  "log": {
+    "title": "运行日志",
+    "clear": "清空",
+    "empty": "尚无输出。开始安装后，这里会实时显示进度。",
+    "show": "展开",
+    "hide": "收起"
+  },
+  "stage": {
+    "uv": "安装 uv",
+    "python": "安装 Python",
+    "vscode": "安装 VSCode",
+    "extensions": "安装扩展",
+    "path": "更新 PATH"
+  }
+}

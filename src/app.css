@@ -1,0 +1,657 @@
+:root {
+  --bg: #f5f6fb;
+  --surface: #ffffff;
+  --surface-2: #f0f2f8;
+  --border: #e2e5ef;
+  --text: #1c2130;
+  --text-dim: #616a80;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-soft: #eef0fe;
+  --success: #0f9d58;
+  --warn: #c77700;
+  --error: #d1373a;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 2px rgba(20, 24, 40, 0.06), 0 6px 20px rgba(20, 24, 40, 0.06);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select {
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  outline: none;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+/* Checkboxes/radios: keep native rendering (no inflating padding/border that
+   caused overlap in WebKitGTK), just theme and size them consistently. */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  flex: none;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* Layout ------------------------------------------------------------------ */
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.brand h1 {
+  font-size: 20px;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.brand .sub {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge {
+  font-size: 12px;
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.lang-toggle button {
+  border: none;
+  background: var(--surface);
+  color: var(--text-dim);
+  padding: 5px 12px;
+  font-size: 13px;
+}
+
+.lang-toggle button.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  min-height: 0;
+}
+
+.nav {
+  border-right: 1px solid var(--border);
+  padding: 14px 10px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav button {
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav button:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.nav button.active {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.content {
+  overflow-y: auto;
+  padding: 24px 28px;
+}
+
+.screen {
+  max-width: 720px;
+}
+
+.screen h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.screen .lead {
+  margin: 0 0 20px;
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Cards ------------------------------------------------------------------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card p.hint {
+  margin: 0 0 14px;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.field label,
+.field .flabel {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.field input:not([type="checkbox"]):not([type="radio"]),
+.field select {
+  width: 100%;
+}
+
+.spread {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Buttons ----------------------------------------------------------------- */
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+
+.btn.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.btn.big {
+  padding: 14px 22px;
+  font-size: 16px;
+  border-radius: var(--radius);
+  width: 100%;
+}
+
+/* One-click summary ------------------------------------------------------- */
+.summary {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+
+.summary li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 14px;
+}
+
+.summary li:last-child {
+  border-bottom: none;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex: none;
+}
+
+/* Tags (extensions) ------------------------------------------------------- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 6px 4px 12px;
+  font-size: 13px;
+}
+
+.tag button {
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 50%;
+}
+
+.tag button:hover {
+  background: var(--border);
+  color: var(--error);
+}
+
+/* Toggle switch ----------------------------------------------------------- */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  flex: none;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: 999px;
+  transition: 0.15s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.15s;
+}
+
+.switch input:checked + .slider {
+  background: var(--primary);
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(18px);
+}
+
+.checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.checks label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+/* Network results --------------------------------------------------------- */
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+
+.status-pill {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.status-pill.ok {
+  color: var(--success);
+  background: rgba(15, 157, 88, 0.12);
+}
+
+.status-pill.bad {
+  color: var(--error);
+  background: rgba(209, 55, 58, 0.12);
+}
+
+.mono {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+}
+
+.path-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text);
+}
+
+.path-list li {
+  margin: 4px 0;
+}
+
+/* Log console ------------------------------------------------------------- */
+.logpanel {
+  border-top: 1px solid var(--border);
+  background: #0f1320;
+  color: #cdd3e0;
+  display: flex;
+  flex-direction: column;
+  max-height: 40vh;
+}
+
+.logpanel.collapsed {
+  max-height: 42px;
+}
+
+.logbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: #171c2c;
+  border-bottom: 1px solid #232a3f;
+  cursor: pointer;
+}
+
+.logbar .title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e6eaf3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logbar .actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logbar .actions button {
+  border: 1px solid #2c344c;
+  background: transparent;
+  color: #aab3c8;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 3px 9px;
+}
+
+.logbar .actions button:hover {
+  background: #232a3f;
+  color: #fff;
+}
+
+.progress {
+  height: 5px;
+  background: #232a3f;
+  width: 160px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.25s ease;
+}
+
+.logbody {
+  overflow-y: auto;
+  padding: 10px 16px;
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.logbody .empty {
+  color: #5b647c;
+}
+
+.logline {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.logline.cmd {
+  color: #8ab4ff;
+}
+.logline.info {
+  color: #cdd3e0;
+}
+.logline.warn {
+  color: #f2c14e;
+}
+.logline.error {
+  color: #ff8080;
+}
+.logline.success {
+  color: #6ee7a8;
+}
+
+/* --- component status --- */
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge.ok {
+  color: var(--success);
+  background: rgba(15, 157, 88, 0.1);
+  border-color: rgba(15, 157, 88, 0.35);
+}
+
+.badge.warn {
+  color: var(--warn);
+  background: rgba(199, 119, 0, 0.1);
+  border-color: rgba(199, 119, 0, 0.35);
+}
+
+.badge.accent {
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-color: rgba(79, 70, 229, 0.35);
+}
+
+.badge.muted {
+  opacity: 0.7;
+}
+
+.substatus {
+  margin: 4px 0 10px;
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+
+.summary li.srow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.summary li.srow > span:first-child {
+  display: inline-flex;
+  align-items: center;
+}
+
+.checkline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 4px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.tag.installed {
+  border-color: rgba(15, 157, 88, 0.4);
+  background: rgba(15, 157, 88, 0.08);
+}
+
+.tag .tick {
+  color: var(--success);
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+.tag.outdated {
+  border-color: rgba(199, 119, 0, 0.45);
+  background: rgba(199, 119, 0, 0.1);
+}
+
+.tag .up {
+  color: var(--warn);
+  font-weight: 800;
+  margin-right: 2px;
+}
+
+.btn.ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-dim);
+}
+
+.btn.ghost:hover:not(:disabled) {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.btn.small {
+  padding: 5px 12px;
+  font-size: 13px;
+}

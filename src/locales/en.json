@@ -1,0 +1,127 @@
+{
+  "app": {
+    "title": "pydev",
+    "subtitle": "Python dev environment installer"
+  },
+  "nav": {
+    "oneclick": "One-click",
+    "components": "Components",
+    "network": "Network",
+    "path": "PATH",
+    "settings": "Settings"
+  },
+  "common": {
+    "install": "Install",
+    "reinstall": "Reinstall",
+    "installing": "Installing…",
+    "apply": "Apply",
+    "applying": "Applying…",
+    "test": "Test network",
+    "testing": "Testing…",
+    "save": "Save",
+    "saved": "Saved",
+    "add": "Add",
+    "optional": "optional",
+    "update": "Update to latest",
+    "upgradeTo": "Upgrade to {version}",
+    "refresh": "Refresh"
+  },
+  "status": {
+    "installed": "Installed",
+    "notInstalled": "Not installed",
+    "updateAvailable": "Update available",
+    "checking": "Checking…",
+    "configured": "Configured",
+    "pending": "Pending"
+  },
+  "oneclick": {
+    "title": "One-click install",
+    "lead": "Install everything at once with sensible defaults. You can also install components individually on the Components tab.",
+    "summaryTitle": "The following will be installed:",
+    "uv": "uv package manager",
+    "python": "Python ({version}, installed by uv)",
+    "vscode": "Visual Studio Code",
+    "extensions": "{count} VSCode extensions",
+    "path": "Update the PATH environment variable",
+    "button": "Start one-click install",
+    "running": "Installing…",
+    "reinstall": "Reinstall / update components already present",
+    "skipHint": "Components already installed and satisfying requirements are skipped (toggle above to force reinstall).",
+    "installedTag": "installed",
+    "willInstall": "will install",
+    "willUpdate": "will update",
+    "willSkip": "will skip"
+  },
+  "components": {
+    "title": "Components",
+    "lead": "Each component can be installed or reinstalled on its own - for example, to switch to a different Python version.",
+    "uv": {
+      "title": "uv package manager",
+      "hint": "An extremely fast Python package and version manager; Python is installed and managed through it."
+    },
+    "python": {
+      "title": "Python",
+      "hint": "Choose the Python version to install; downloaded and managed by uv.",
+      "version": "Version",
+      "setDefault": "Also create the python / python3 commands",
+      "installedList": "Installed: {versions}",
+      "none": "No versions installed yet",
+      "missing": "Selected version not installed yet"
+    },
+    "vscode": {
+      "title": "Visual Studio Code",
+      "hint": "Install the latest stable VSCode with the extensions needed for Python development.",
+      "enable": "Install VSCode (turn off for terminal-only setups)",
+      "extensions": "Extensions",
+      "addPlaceholder": "publisher.extension",
+      "installExt": "Install extensions only",
+      "extCount": "{installed}/{total} extensions installed",
+      "extUpdates": ", {count} update(s) available"
+    }
+  },
+  "network": {
+    "title": "Network",
+    "lead": "If you are behind a firewall or proxy, configure it here. Leave empty for a direct connection.",
+    "http": "HTTP proxy",
+    "https": "HTTPS proxy",
+    "noProxy": "No-proxy hosts",
+    "placeholder": "e.g. http://127.0.0.1:7890",
+    "summary": "{ok}/{total} endpoints reachable",
+    "hint": "If some endpoints are unreachable, set a proxy above and test again.",
+    "reachable": "reachable",
+    "unreachable": "unreachable"
+  },
+  "path": {
+    "title": "PATH environment",
+    "lead": "So that the uv, Python and code commands are found, these directories need to be on your PATH.",
+    "entries": "Directories to add to PATH",
+    "targets": "Locations to modify",
+    "shells": "Shell profiles to update",
+    "update": "Allow PATH updates",
+    "apply": "Apply PATH changes",
+    "windowsNote": "On Windows the current user's PATH (registry) is updated - no administrator rights required."
+  },
+  "settings": {
+    "title": "Settings",
+    "lead": "Interface language and configuration. Settings are saved to a local config file used by the CLI and the next launch.",
+    "language": "Interface language",
+    "chinese": "中文",
+    "english": "English",
+    "save": "Save config to disk",
+    "configNote": "The same config file can be used by the pydev-cli command-line tool."
+  },
+  "log": {
+    "title": "Activity log",
+    "clear": "Clear",
+    "empty": "No output yet. Progress will stream here once an install starts.",
+    "show": "Show",
+    "hide": "Hide"
+  },
+  "stage": {
+    "uv": "Installing uv",
+    "python": "Installing Python",
+    "vscode": "Installing VSCode",
+    "extensions": "Installing extensions",
+    "path": "Updating PATH"
+  }
+}
